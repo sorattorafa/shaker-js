@@ -12,9 +12,10 @@ from print_failures import print_failures
 from tool_maven import Maven
 from tool_pytest import Pytest
 from tool_jest import Jest
+from tool_karma import Karma
 
 def main(args):
-    tools = {"pytest": Pytest, "maven": Maven , "jest": Jest }
+    tools = {"pytest": Pytest, "maven": Maven , "jest": Jest, "karma": Karma }
 
     # Environment setup
     directory = Path(args.directory)
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
 
     parser.add_argument(
-        "tool", choices=["pytest", "maven", "jest"], help="specify testing tool"
+        "tool", choices=["pytest", "maven", "jest", "karma"], help="specify testing tool"
     )
     parser.add_argument("directory", help="specify directory")
     parser.add_argument("-e", "--extra-arguments",
