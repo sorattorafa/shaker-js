@@ -26,7 +26,7 @@ def save_flakies():
         
         modules = []
         for module in failures:
-            module = {
+            saved_module = {
                 'name': module,
                 'test_cases': []
             }
@@ -45,12 +45,13 @@ def save_flakies():
                     else:
                         tests_run_configurations_type = 'stress'
                         stress_failures += 1
-                        module['test_cases'].push({
-                            'test_name': testCaseName,
-                            'test_result': testCaseName,
-                            'test_run_configuration_id': tests_run_configurations_type
-                        })
-        modules.push(module)
+                        
+                    saved_module['test_cases'].push({
+                        'test_name': testCaseName,
+                        'test_result': testCaseName,
+                        'test_run_configuration_id': tests_run_configurations_type
+                    })
+            modules.push(saved_module)
 
         testsReportObject = {
             "project_infos": {
