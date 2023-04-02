@@ -46,12 +46,12 @@ def save_flakies():
                         tests_run_configurations_type = 'stress'
                         stress_failures += 1
                         
-                    saved_module['test_cases'].push({
+                    saved_module['test_cases'].append({
                         'test_name': testCaseName,
                         'test_result': testCaseName,
                         'test_run_configuration_id': tests_run_configurations_type
                     })
-            modules.push(saved_module)
+            modules.append(saved_module)
 
         testsReportObject = {
             "project_infos": {
