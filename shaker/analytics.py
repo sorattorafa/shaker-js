@@ -48,7 +48,7 @@ def save_flakies():
                         
                     saved_module['test_cases'].append({
                         'test_name': testCaseName,
-                        'test_result': testCaseName,
+                        'test_result': failure,
                         'test_run_configuration_id': tests_run_configurations_type
                     })
             modules.append(saved_module)
