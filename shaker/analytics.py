@@ -58,7 +58,7 @@ def save_flakies():
                 "name": repoInfo["name"],
                 "commit": repoInfo["ref"]
             },
-            "total_runs": testsReportObject,
+            "total_runs": total_runs,
             "tests_run_configurations": [
                 {
                     "type": 'plain',
