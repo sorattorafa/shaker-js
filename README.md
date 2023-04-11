@@ -57,6 +57,8 @@ Add the following code to your GitHub Actions workflow configuration
 
 - ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "react-helmet" --tests-command "yarn test"
 
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "preactjs-preact-0f51cddb" --tests-command "yarn test" --output-folder "preactjs-preact-0f51cddb/output"
+
 To see examples [visit our website](https://star-rg.github.io/shaker/).
 
 
