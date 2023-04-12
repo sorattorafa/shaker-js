@@ -29,9 +29,6 @@ class Karma(BaseTool):
         #out_put = '\\output\\'
         #string_report = str(report_folder).split(out_put)[1]
         #string_report = string_report[0:len(string_report)] + '.xml'
-        #env_ = os.environ.copy()
-        #env_["JEST_JUNIT_UNIQUE_OUTPUT_NAME"] = "true"
-        #env_["JEST_JUNIT_OUTPUT_DIR"] = string_report
 
         command = (
             f"{tests_command} {self.tests_path} --reporters=default --reporters=junit --outputFile=${string_report} --outputDir='./output/'"
