@@ -21,7 +21,9 @@ cat $fileresult
 result=$(<$fileresult)
 
 echo $result
-cd $GITHUB_REPOSITORY
+
+projectPath=$GITHUB_REPOSITORY | cut -d '/' -f 2
+cd $projectPath
 ls
 
 cd ..
