@@ -16,9 +16,8 @@ def get_args():
     return args
 
 def save_flakies():
-    
+    args = get_args()
     with open(Path(args.output_folder) / "__results.json") as f:
-        args = get_args()
         total_runs = args.nsr + (args.sr * 4)
 
         repoInfo = {"name": args.repo, "ref": args.ref, "num_tests": args.numtests}
