@@ -15,9 +15,27 @@ def get_args():
     args = parser.parse_args()
     return args
 
+def openResultsJson(args):
+    f = None
+    mode = "r"
+    try:
+      f = open((Path("./output/") / "__results.json"), mode)
+    except IOError:
+      pass
+
+    if f == None:
+        try:
+            f = open((Path("{}./output/".format(args.repo)) / "__results.json"), mode)
+        except IOError:
+            pass
+    return f
+
 def save_flakies():
     args = get_args()
-    with open(Path(args.output_folder) / "__results.json") as f:
+    f = openResultsJson(args)
+    if f == None:
+        raise Exception("Results file not found")
+    else:
         total_runs = args.nsr + (args.sr * 4)
 
         repoInfo = {"name": args.repo, "ref": args.ref, "num_tests": args.numtests}
