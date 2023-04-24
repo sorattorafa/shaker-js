@@ -25,9 +25,9 @@ class Karma(BaseTool):
     def run_tests(self, report_folder, tests_command):
         
         string_report = str(report_folder)
-        print(['string report debug', string_report])
+        string_report = string_report.split('/output/')[1] + '.xml'
         command = (
-            f"{tests_command} {self.tests_path} --reporters=default --reporters=junit --outputFile=${string_report} --outputDir='output/'"
+            f"{tests_command} {self.tests_path} --reporters=default --reporters=junit --outputFile=${'string_report'} --outputDir='output/'"
             if self.tests_path else f"{tests_command} --reporters=default --reporters=junit --outputFile=${string_report} --outputDir='output/'"
         )
         stdout_ = open(self.output_folder /
