@@ -9,7 +9,14 @@ def find(name, path):
     for root, dirs, files in os.walk(path):
         if name in files:
             return os.path.join(root, name)
-            
+
+def find_all(name, path):
+    result = []
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            result.append(os.path.join(root, name))
+    return result
+
 def get_args():
     parser = ArgumentParser()
     parser.add_argument("output_folder", help="output folder")
@@ -22,6 +29,8 @@ def get_args():
     return args
 
 def openResultsJson(args):
+    print(find_all("__results.json", '../'))
+    print(find_all("__results.json", './'))
     f = None
     mode = "r"
     try:
