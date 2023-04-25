@@ -60,9 +60,9 @@ def parse(dir):
                         else:
                             failures[key][key2].extend(value)
 
-    for key in failures:
-        for key2 in failures[key]:
-            failures[key][key2].sort(key=order)
+    #for key in failures:
+    #    for key2 in failures[key]:
+    #        failures[key][key2].sort(key=order)
 
     return failures
 
