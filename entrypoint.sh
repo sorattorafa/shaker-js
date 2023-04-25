@@ -16,8 +16,8 @@ do
   done
 done
 
-sudo find ./ -type f -iname __results.json
-filelocal=find ./ -type f -iname __results.json
+find . -type f -iname __results.json
+filelocal=find . -type f -iname __results.json
 echo $filelocal
 echo $tests
 
