@@ -53,7 +53,7 @@ def save_flakies():
         failures = json.load(f)
         
         modules = []
-        print(failures, f, 'failures debug')
+        print(failures, f.read(), 'failures debug')
         for module in failures:
             saved_module = {
                 'name': module,
