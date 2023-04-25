@@ -34,7 +34,13 @@ def openResultsJson(args):
             f = open((Path("{}".format(args.output_folder)) / "__results.json"), mode)
         except IOError:
             pass
-        
+
+    if f == None:
+        try:
+            f = open((Path("{}".format(args.output_folder))), mode)
+        except IOError:
+            pass
+
     return f
 
 def save_flakies():
