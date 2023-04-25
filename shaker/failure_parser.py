@@ -3,7 +3,6 @@ from xml.etree import ElementTree
 
 
 def order(entry):
-    print('debug entry', entry)
     # Sort by configuration then run number
     if entry["config"] == "no-stress":
         return (-1, int(entry["run_number"]))
@@ -18,19 +17,18 @@ def parse(dir):
     for sub_directory in dir.iterdir():
         if not sub_directory.is_dir():
             continue
-        print(sub_directory, 'debug sub directory')
+
         # report.configuration.run_number
         config = sub_directory.name.split(".")[1].strip()
         run_number = sub_directory.name.split(".")[2].strip()
 
         xml_files = sub_directory.glob("*.xml")
-        print(xml_files, 'debug xml files')
+
         for xml_file in xml_files:
-            print(xml_file, 'debug xml file')
             root = ElementTree.parse(xml_file).getroot()
 
             testcases = root.findall("testcase")
-            print(xml_file, testcases, 'xml test cases')
+
             if testcases == []:
                 testcases = root.findall("testsuite/testcase")
 
@@ -62,9 +60,9 @@ def parse(dir):
                         else:
                             failures[key][key2].extend(value)
 
-    #for key in failures:
-    #    for key2 in failures[key]:
-    #        failures[key][key2].sort(key=order)
+    for key in failures:
+        for key2 in failures[key]:
+            failures[key][key2].sort(key=order)
 
     return failures
 
