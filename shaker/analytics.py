@@ -30,6 +30,7 @@ def get_args():
 
 def openResultsJson(args):
     print(find_all("__results.json", '../'))
+    print(find_all("__results.json", '../../'))
     print(find_all("__results.json", './'))
     f = None
     mode = "r"
