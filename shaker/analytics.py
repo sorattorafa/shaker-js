@@ -53,12 +53,15 @@ def save_flakies():
         failures = json.load(f)
         
         modules = []
+        print(failures, 'failures debug')
         for module in failures:
             saved_module = {
                 'name': module,
                 'test_cases': []
             }
+            print(failures[module], 'failures module debug')
             for test_case in failures[module]:
+                print(test_case, 'test_case module debug')
                 testCaseName = test_case
 
                 function_failures = failures[module][test_case]
@@ -67,7 +70,7 @@ def save_flakies():
                 stress_failures = 0
                 tests_run_configurations_type = 'plain'
                 for failure in function_failures:
-                    
+                    print(failure, 'test_case module debug')
                     if failure["config"] == "no-stress":
                         no_stress_failures += 1
                     else:
