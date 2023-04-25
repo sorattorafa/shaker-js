@@ -28,24 +28,7 @@ def openResultsJson(args):
       f = open((Path("./output/") / "__results.json"), mode)
     except IOError:
       pass
-
-    if f == None:
-        try:
-            f = open((Path("{}./output/".format(args.repo)) / "__results.json"), mode)
-        except IOError:
-            pass
     
-    if f == None:
-        try:
-            f = open((Path("{}".format(args.output_folder)) / "__results.json"), mode)
-        except IOError:
-            pass
-
-    if f == None:
-        try:
-            f = open((Path("{}".format(args.output_folder))), mode)
-        except IOError:
-            pass
     if f == None:
             try:
                 f = open(find("__results.json", '.'), mode)
