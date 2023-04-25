@@ -3,7 +3,13 @@ import time
 from argparse import ArgumentParser
 from requests import post
 from pathlib import Path
+import os
 
+def find(name, path):
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            return os.path.join(root, name)
+            
 def get_args():
     parser = ArgumentParser()
     parser.add_argument("output_folder", help="output folder")
@@ -40,7 +46,16 @@ def openResultsJson(args):
             f = open((Path("{}".format(args.output_folder))), mode)
         except IOError:
             pass
-
+    if f == None:
+            try:
+                f = open(find("__results.json", '.'), mode)
+            except IOError:
+                pass
+    if f == None:
+            try:
+                f = open(find("__results.json", '../'), mode)
+            except IOError:
+                pass
     return f
 
 def save_flakies():
