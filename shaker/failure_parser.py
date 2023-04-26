@@ -17,7 +17,7 @@ def parse(dir):
     for sub_directory in dir.iterdir():
         if not sub_directory.is_dir():
             continue
-
+        print('sub_directory.name', sub_directory.name)
         # report.configuration.run_number
         config = sub_directory.name.split(".")[1].strip()
         run_number = sub_directory.name.split(".")[2].strip()
