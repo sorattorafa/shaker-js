@@ -5,9 +5,12 @@ from requests import post
 from pathlib import Path
 import os
 
+# usar o abs path
+
 def find(name, path):
     for root, dirs, files in os.walk(path):
         if name in files:
+            print(os.path.abspath(os.path.join(root, name)))
             return os.path.join(root, name)
 
 def find_all(name, path):
@@ -29,9 +32,6 @@ def get_args():
     return args
 
 def openResultsJson(args):
-    print(find_all("__results.json", '../'))
-    print(find_all("__results.json", '../../'))
-    print(find_all("__results.json", './'))
     f = None
     mode = "r"
     try:
@@ -44,11 +44,7 @@ def openResultsJson(args):
                 f = open(find("__results.json", '.'), mode)
             except IOError:
                 pass
-    if f == None:
-            try:
-                f = open(find("__results.json", '../'), mode)
-            except IOError:
-                pass
+
     return f
 
 def save_flakies():
@@ -69,9 +65,7 @@ def save_flakies():
                 'name': module,
                 'test_cases': []
             }
-            print(failures[module], 'failures module debug')
             for test_case in failures[module]:
-                print(test_case, 'test_case module debug')
                 testCaseName = test_case
 
                 function_failures = failures[module][test_case]
@@ -80,7 +74,6 @@ def save_flakies():
                 stress_failures = 0
                 tests_run_configurations_type = 'plain'
                 for failure in function_failures:
-                    print(failure, 'test_case module debug')
                     if failure["config"] == "no-stress":
                         no_stress_failures += 1
                     else:
