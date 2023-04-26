@@ -1,6 +1,6 @@
 from pathlib import Path
 from xml.etree import ElementTree
-
+import os
 
 def order(entry):
     # Sort by configuration then run number
@@ -13,7 +13,8 @@ def order(entry):
 # Parses all xml files in the project folder
 def parse(dir):
     failures = dict()
-
+    
+    print(os.listdir(dir.name))
     for sub_directory in dir.iterdir():
         print('sub_directory.name', sub_directory.name)
         if not sub_directory.is_dir():
