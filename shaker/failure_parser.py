@@ -23,14 +23,16 @@ def parse(dir):
     #    if not sub_directory.is_dir():
     #        continue
         # report.configuration.run_number
-    for sub_directory in list(Path(dir.name).rglob('*.*.xml')):
-        sub_directory = Path(sub_directory)
+    for sub_directory_name in list(Path(dir.name).rglob('*.*.xml')):
+        sub_directory = Path(sub_directory_name)
         config = sub_directory.name.split(".")[1].strip()
         run_number = sub_directory.name.split(".")[2].strip()
 
-        xml_files = sub_directory.glob("*.xml")
+        #xml_files = sub_directory.glob("*.xml")
 
-        for xml_file in xml_files:
+        #for xml_file in xml_files:
+        if(sub_directory_name != None):
+            xml_file = sub_directory_name
             root = ElementTree.parse(xml_file).getroot()
 
             testcases = root.findall("testcase")
