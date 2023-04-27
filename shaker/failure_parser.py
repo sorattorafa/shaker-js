@@ -17,6 +17,7 @@ def parse(dir):
     print(dir.name)
     print(os.listdir(dir.name))
     print(list(Path(dir.name).rglob('*.*')))
+    print(sub_directory.glob("*/*.xml"))
     for sub_directory in dir.iterdir():
         print('sub_directory.name', sub_directory.name)
         if not sub_directory.is_dir():
