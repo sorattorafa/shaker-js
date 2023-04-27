@@ -16,13 +16,15 @@ def parse(dir):
     
     print(dir.name)
     print(os.listdir(dir.name))
-    print(list(Path(dir.name).rglob('*.*')))
-    print(list(dir.glob("*/*.xml")))
-    for sub_directory in dir.iterdir():
-        print('sub_directory.name', sub_directory.name)
-        if not sub_directory.is_dir():
-            continue
+    print(list(Path(dir.name).rglob('*.*.xml')))
+    
+    #for sub_directory in dir.iterdir():
+    #    print('sub_directory.name', sub_directory.name)
+    #    if not sub_directory.is_dir():
+    #        continue
         # report.configuration.run_number
+    for sub_directory in list(Path(dir.name).rglob('*.*.xml')):
+        sub_directory = Path(sub_directory)
         config = sub_directory.name.split(".")[1].strip()
         run_number = sub_directory.name.split(".")[2].strip()
 
