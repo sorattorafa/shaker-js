@@ -10,27 +10,27 @@ def order(entry):
         return (int(entry["config"]), int(entry["run_number"]))
 
 
+def find_xml_files(dir):
+    if(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
+        return list(Path(dir.name).rglob('*.*.xml'))
+    elif(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
+        return list(Path(dir.name).rglob('*.xml'))
+    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
+        return list(Path(dir).rglob('*.*.xml'))
+    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
+        return list(Path(dir).rglob('*.xml'))
+    
+    else: return []
 # Parses all xml files in the project folder
 def parse(dir):
+
     failures = dict()
     
-    print(dir.name)
-    print(os.listdir(dir.name))
-    print(list(Path(dir.name).rglob('*.*.xml')))
-    
-    #for sub_directory in dir.iterdir():
-    #    print('sub_directory.name', sub_directory.name)
-    #    if not sub_directory.is_dir():
-    #        continue
-        # report.configuration.run_number
-    for sub_directory_name in list(Path(dir.name).rglob('*.*.xml')):
+    for sub_directory_name in find_xml_files(dir):
         sub_directory = Path(sub_directory_name)
         config = sub_directory.name.split(".")[1].strip()
         run_number = sub_directory.name.split(".")[2].strip()
 
-        #xml_files = sub_directory.glob("*.xml")
-
-        #for xml_file in xml_files:
         if(sub_directory_name != None):
             xml_file = sub_directory_name
             root = ElementTree.parse(xml_file).getroot()

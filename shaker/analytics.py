@@ -10,7 +10,6 @@ import os
 def find(name, path):
     for root, dirs, files in os.walk(path):
         if name in files:
-            print(os.path.abspath(os.path.join(root, name)))
             return os.path.join(root, name)
 
 def find_all(name, path):
@@ -59,7 +58,7 @@ def save_flakies():
         failures = json.load(f)
         
         modules = []
-        print(failures, f.read(), 'failures debug')
+
         for module in failures:
             saved_module = {
                 'name': module,
