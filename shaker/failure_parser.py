@@ -10,6 +10,7 @@ def order(entry):
         return (int(entry["config"]), int(entry["run_number"]))
 
 
+# mudar para dir.absolute.name
 def find_xml_files(dir):
     if(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
         return list(Path(dir.name).rglob('*.*.xml'))
@@ -19,8 +20,8 @@ def find_xml_files(dir):
         return list(Path(dir).rglob('*.*.xml'))
     elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
         return list(Path(dir).rglob('*.xml'))
-    
     else: return []
+    
 # Parses all xml files in the project folder
 def parse(dir):
 
