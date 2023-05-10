@@ -184,6 +184,7 @@ def default_post():
                 "function_name": testCaseName,
                 "datetime_epoch": int(time.time()),
                 "ratio": ratio,
+                "created_at": int(time.time())
             }
             flakyJson = json.loads(json.dumps(flaky))
             post(flakiesUrl, json=flakyJson)
