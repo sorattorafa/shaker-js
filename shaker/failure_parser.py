@@ -12,14 +12,8 @@ def order(entry):
 
 # mudar para dir.absolute.name
 def find_xml_files(dir):
-    if(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
-        return list(Path(dir.name).rglob('*.*.xml'))
-    elif(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
-        return list(Path(dir.name).rglob('*.xml'))
-    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
-        return list(Path(dir).rglob('*.*.xml'))
-    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
-        return list(Path(dir).rglob('*.xml'))
+    if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
+        return list(Path(dir.absolute().name).rglob('*.xml'))
     else: return []
     
 # Parses all xml files in the project folder
