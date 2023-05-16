@@ -32,7 +32,7 @@ Add the following code to your GitHub Actions workflow configuration
     # Example: runs: "3"
     runs: "3"
     
-    tests_command: "yarn test"
+    tests_command: "npm run test"
 ```
 
 ## Inputs
@@ -48,19 +48,19 @@ Add the following code to your GitHub Actions workflow configuration
 
 ## Jest example 
 
-- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "react-styleguidist" --tests-command "yarn test:jest"
-- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "react-hook-form" --tests-command "yarn test"
-- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "jests-tests-example" --tests-command "yarn test" --output-folder "jests-tests-example/output"
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "react-styleguidist" --tests-command "npm run test:jest"
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "react-hook-form" --tests-command "npm run test"
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "jests-tests-example" --tests-command "npm run test" --output-folder "jests-tests-example/output"
 
 
 
 ## Karma example
 
-- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "react-helmet" --tests-command "yarn test"
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "react-helmet" --tests-command "npm run test"
 
-- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "preactjs-preact-0f51cddb" --tests-command "yarn test" --output-folder "preactjs-preact-0f51cddb/output"
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "preactjs-preact-0f51cddb" --tests-command "npm run test" --output-folder "preactjs-preact-0f51cddb/output"
 
-- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "react-helmet-tree-a2323ad" --tests-command "yarn test" --output-folder "react-helmet-tree-a2323ad/output"
+- ./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 karma "react-helmet-tree-a2323ad" --tests-command "npm run test" --output-folder "react-helmet-tree-a2323ad/output"
 
 To see examples [visit our website](https://star-rg.github.io/shaker/).
 

@@ -49,4 +49,4 @@ $ ./shaker.py --no-stress-runs 1 --stress-runs 4 maven "project/path"
 
 ### Jest Example
 
-./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "react-styleguidist" --tests-command "yarn test:jest"
+./shaker-js/shaker/shaker.py --stress-runs 1 --no-stress-runs 1 jest "react-styleguidist" --tests-command "npm run test:jest"
