@@ -1,6 +1,5 @@
 from pathlib import Path
 from xml.etree import ElementTree
-import os
 
 def order(entry):
     # Sort by configuration then run number
@@ -9,11 +8,11 @@ def order(entry):
     else:
         return (int(entry["config"]), int(entry["run_number"]))
 
-
-# mudar para dir.absolute.name
 def find_xml_files(dir):
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
         return list(Path(dir.absolute().name).rglob('*.xml'))
+    elif(len(list(Path(dir).rglob('*.xml'))) != 0):
+        return list(Path(dir).rglob('*.xml'))
     else: return []
     
 # Parses all xml files in the project folder
