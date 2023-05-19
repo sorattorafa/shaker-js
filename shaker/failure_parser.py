@@ -10,6 +10,7 @@ def order(entry):
 
 def find_xml_files(dir):
     xml_files = []
+    print(dir, dir.absolute().name, dir.name)
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
         print(1, list(Path(dir.absolute().name).rglob('*.xml')))
         xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
