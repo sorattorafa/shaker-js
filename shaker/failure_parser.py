@@ -11,23 +11,14 @@ def order(entry):
 def find_xml_files(dir):
     xml_files = []
     print(dir, dir.absolute().name, dir.name)
+    for path in Path(dir).iterdir():
+        if path.is_dir():
+            print(path)
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
         print(1, list(Path(dir.absolute().name).rglob('*.xml')))
         xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
     elif(len(list(Path(dir).rglob('*.xml'))) != 0):
         print(2, list(Path(dir).rglob('*.xml')))
-        xml_files = list(Path(dir).rglob('*.xml'))
-    elif(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
-        print(3)
-        xml_files = list(Path(dir.name).rglob('*.*.xml'))
-    elif(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
-        print(4)
-        xml_files = list(Path(dir.name).rglob('*.xml'))
-    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
-        print(5)
-        xml_files = list(Path(dir).rglob('*.*.xml'))
-    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
-        print(6)
         xml_files = list(Path(dir).rglob('*.xml'))
     print(xml_files, 'list.xml')
     return xml_files
