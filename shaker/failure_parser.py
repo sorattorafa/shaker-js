@@ -12,6 +12,11 @@ def find_xml_files(dir):
     xml_files = []
     print(dir, dir.absolute().name, dir.name)
     for path in Path(dir).iterdir():
+        print(path)
+        if path.is_dir():
+            print(path)
+    for path in Path(dir.name).iterdir():
+        print(path)
         if path.is_dir():
             print(path)
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
