@@ -14,6 +14,7 @@ def find_xml_files(dir):
         xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
     elif(len(list(Path(dir).rglob('*.xml'))) != 0):
         xml_files = list(Path(dir).rglob('*.xml'))
+    print(xml_files, 'xmlfiles')
     return xml_files
     
 # Parses all xml files in the project folder
