@@ -9,8 +9,12 @@ def order(entry):
         return (int(entry["config"]), int(entry["run_number"]))
 
 def find_xml_files(dir):
+    print('dir names', dir.name, dir.absolute().name, dir)
     xml_files = []
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
+        xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
+        print(0)
+    elif(len(list(Path(dir.absolute()).rglob('*.xml'))) != 0):
         xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
         print(0)
     elif(len(list(Path(dir).rglob('*.xml'))) != 0):

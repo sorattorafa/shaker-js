@@ -27,6 +27,7 @@ class Jest(BaseTool):
     def run_tests(self, report_folder, tests_command):
         string_report = str(report_folder).split('output/')[1]
         string_report = './output/' + string_report[0:len(string_report)]
+        print('savedfile', string_report)
         env = os.environ.copy()
         env["JEST_JUNIT_UNIQUE_OUTPUT_NAME"] = "true"
         env["JEST_JUNIT_OUTPUT_DIR"] = string_report
