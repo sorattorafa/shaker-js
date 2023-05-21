@@ -23,8 +23,8 @@ def parse(dir):
     
     for sub_directory_name in find_xml_files(dir):
         sub_directory = Path(sub_directory_name)
-        config = sub_directory.name.split(".")[1].strip()
-        run_number = sub_directory.name.split(".")[2].strip()
+        #config = sub_directory.name.split(".")[1].strip()
+        #run_number = sub_directory.name.split(".")[2].strip()
 
         if(sub_directory_name != None):
             xml_file = sub_directory_name
@@ -48,8 +48,8 @@ def parse(dir):
                     key2 = name
                     value = [
                         {
-                            "config": config,
-                            "run_number": run_number,
+                            #"config": config,
+                            #"run_number": run_number,
                             "description": description,
                         }
                     ]
