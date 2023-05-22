@@ -26,7 +26,6 @@ class Karma(BaseTool):
         
         string_report = str(report_folder)
         string_report = string_report.split('/output/')[1] + '.xml'
-        print('savedfile', string_report)
         command = (
             f"{tests_command} {self.tests_path} --reporters=default --reporters=junit --outputFile=${string_report} --outputDir='output/'"
             if self.tests_path else f"{tests_command} --reporters=default --reporters=junit --outputFile=${string_report} --outputDir='output/'"

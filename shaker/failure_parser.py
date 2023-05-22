@@ -10,37 +10,17 @@ def order(entry):
         return (int(entry["config"]), int(entry["run_number"]))
 
 def find_xml_files(dir):
-    print('dir names', dir.name, dir.absolute().name, dir)
     xml_files = []
-    time.sleep(20)
+    print(dir, dir.absolute().name, dir.name)
+    for path in Path(dir).iterdir():
+        if path.is_dir():
+            xml_files = list(Path(path).rglob('*.xml'))
+            print(path, xml_files)
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
         xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
-        print(0)
-    elif(len(list(Path(dir.absolute()).rglob('*.xml'))) != 0):
-        xml_files = list(Path(dir.absolute()).rglob('*.xml'))
-        print(1)
-    elif(len(list(Path(dir.absolute()).rglob('*.xml'))) != 0):
-        xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
-        print(111)
     elif(len(list(Path(dir).rglob('*.xml'))) != 0):
-        print(1111)
         xml_files = list(Path(dir).rglob('*.xml'))
-    elif(len(list(Path(dir).rglob('*.xml'))) != 0):
-        print(2)
-        xml_files = list(Path(dir).rglob('*.xml'))
-    elif(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
-        print(3)
-        xml_files = list(Path(dir.name).rglob('*.*.xml'))
-    elif(len(list(Path(dir.name).rglob('*.*.xml'))) != 0):
-        print(4)
-        xml_files = list(Path(dir.name).rglob('*.xml'))
-    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
-        print(5)
-        xml_files = list(Path(dir).rglob('*.*.xml'))
-    elif(len(list(Path(dir).rglob('*.*.xml'))) != 0):
-        print(6)
-        xml_files = list(Path(dir).rglob('*.xml'))
-    print(xml_files, 'xmlfiles')
+    print(xml_files, 'xml_files')
     return xml_files
     
 # Parses all xml files in the project folder
