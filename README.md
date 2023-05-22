@@ -120,11 +120,3 @@ git push
 git commit --allow-empty -m "empty commit to trigger the action"
 git push
 ```
-
-### TODO:
-
-- Reaproveitar a imagem do ubuntu utilizada
-
-### Run analytics local 
-
-- python3 "./shaker-js/shaker/analytics.py" "react-helmet-tree-a2323ad/output" "react-helmet-tree-a2323ad"  "123213" 1 1 1
