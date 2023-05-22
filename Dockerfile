@@ -15,7 +15,7 @@ RUN python3 -m pip install pytest colorama requests
 #RUN apt-get install -y nodejs npm
 
 ## instal nodejs and npm on a version
-ENV NODE_VERSION=16.13.0
+ENV NODE_VERSION=18.16.0
 RUN apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
