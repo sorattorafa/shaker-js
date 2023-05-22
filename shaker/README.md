@@ -5,7 +5,7 @@ Shaker is a script that detects flakiness in codebases by introducing noise and 
 ## Usage
 
 ```
-usage: shaker.py [-h] [-e EXTRA_ARGUMENTS] [-o OUTPUT_FOLDER] [-sr STRESS_RUNS] [-nsr NO_STRESS_RUNS] {pytest,maven} directory
+usage: ./shaker-js/shaker/shaker.py jest "jests-tests-example" -tc "yarn test" -o "jests-tests-example/output" -sr 1 -nsr 1
 
 positional arguments:
   {pytest,maven}        specify testing tool
@@ -21,26 +21,16 @@ optional arguments:
                         specify number of stress runs
   -nsr NO_STRESS_RUNS, --no-stress-runs NO_STRESS_RUNS
                         specify number of no-stress runs
-  -tp TESTS_PATH, --tests-path TESTS_PATH
+  -tc TESTS_COMMAND, --tests-command TESTS_COMMAND
                         specify the path of the test(s) Shaker will execute
 ```
 
-## Example
+## Examples
 
-In this example, Shaker ran the tests 17 times: 1 no-stress runs and 4 (* 4 configurations) stress runs. The following test passed all no-stress runs but failed 4 stress runs, corresponding to 23.53% out of the 17 runs due to an assertion error. If the same test failed with different issues, the errors will be reported as well.
+## Jest example 
 
-```
-$ ./shaker.py --no-stress-runs 1 --stress-runs 4 maven "project/path"
+- ./shaker-js/shaker/shaker.py jest "jests-tests-example" -tc "yarn test" -o "jests-tests-example/output" -sr 1 -nsr 1
 
-==== Failure in module com.project.MyModule ====
-     > at testExample
-       No stress failures: 0 (0.00%)
-       Stress failures: 4 (23.53%)
+## Karma example
 
-       > Descriptions: 
-         java.lang.AssertionError: null
-         	at org.testng.Assert.fail(Assert.java:89)
-         	at org.testng.Assert.assertNotEquals(Assert.java:739)
-         	at org.testng.Assert.assertNotEquals(Assert.java:744)
-         	at com.project.MyModule.testExample(MyModule.java:100)
-```
+- ./shaker-js/shaker/shaker.py karma "react-helmet-tree-a2323ad" -tc "yarn test" -o "react-helmet-tree-a2323ad/output" -sr 1 -nsr 1
