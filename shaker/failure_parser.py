@@ -1,5 +1,6 @@
 from pathlib import Path
 from xml.etree import ElementTree
+import time
 
 def order(entry):
     # Sort by configuration then run number
@@ -11,14 +12,18 @@ def order(entry):
 def find_xml_files(dir):
     print('dir names', dir.name, dir.absolute().name, dir)
     xml_files = []
+    time.sleep(20)
     if(len(list(Path(dir.absolute().name).rglob('*.xml'))) != 0):
         xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
         print(0)
     elif(len(list(Path(dir.absolute()).rglob('*.xml'))) != 0):
-        xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
-        print(0)
-    elif(len(list(Path(dir).rglob('*.xml'))) != 0):
+        xml_files = list(Path(dir.absolute()).rglob('*.xml'))
         print(1)
+    elif(len(list(Path(dir.absolute()).rglob('*.xml'))) != 0):
+        xml_files = list(Path(dir.absolute().name).rglob('*.xml'))
+        print(111)
+    elif(len(list(Path(dir).rglob('*.xml'))) != 0):
+        print(1111)
         xml_files = list(Path(dir).rglob('*.xml'))
     elif(len(list(Path(dir).rglob('*.xml'))) != 0):
         print(2)
