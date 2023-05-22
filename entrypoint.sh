@@ -15,7 +15,10 @@ do
     tests=$(($tests + $h))
   done
 done
-
+ls
+cd output
+ls
+cd ..
 cat ./output/exec_setup.err
 cat ./output/exec_setup.out
 exit $ret
