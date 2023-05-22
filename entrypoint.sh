@@ -16,4 +16,6 @@ do
   done
 done
 
+cat ./output/exec_setup.err
+cat ./output/exec_setup.out
 exit $ret
