@@ -16,13 +16,4 @@ do
   done
 done
 
-#fileresult="./output/__results.json"
-#cat $fileresult
-#result=$(<$fileresult)
-#find . -type f -iname __results.json
-#echo $INPUT_OUTPUT_FOLDER
-#echo "tests number is:"
-#echo $tests
-# python3 "./__shaker/analytics.py" "./__shaker_output" $GITHUB_REPOSITORY $GITHUB_SHA $tests $INPUT_NO_STRESS_RUNS $INPUT_RUNS
-
 exit $ret
