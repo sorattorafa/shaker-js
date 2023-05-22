@@ -15,10 +15,7 @@ do
     tests=$(($tests + $h))
   done
 done
-ls
-cd output
-ls
-cd ..
-cat ./output/exec_setup.err
-cat ./output/exec_setup.out
+cd "$INPUT_OUTPUT_FOLDER"
+cat exec_setup.err
+cat exec_setup.out
 exit $ret
