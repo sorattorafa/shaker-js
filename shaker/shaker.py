@@ -27,12 +27,14 @@ def main(args):
     stress_runs = args.stress_runs
     config_file = Path(__file__).parent / "stressConfigurations.json"
     tests_path = args.tests_path
+    stress_ng_path = args.stress_ng_path
+    tests_command = args.tests_command
 
     with open(config_file) as json_file:
         configs = json.load(json_file)
 
     # Construct tool object and set it up
-    tool = tools[args.tool](directory, extra_arguments, configs, output_folder, tests_path)
+    tool = tools[args.tool](directory, extra_arguments, configs, output_folder, tests_path, stress_ng_path)
 
     logging.basicConfig(level=logging.DEBUG)
     logging.info(
@@ -40,8 +42,6 @@ def main(args):
     )
 
     sleep(2)
-
-    tests_command = args.tests_command
 
     # Run tests
     for i in range(0, no_stress_runs):
@@ -156,6 +156,14 @@ if __name__ == "__main__":
         default="npm run test",
         type=str,
         help="specify the command to tun tests you want Flaky Forcer to run",
+    )
+
+    parser.add_argument(
+        "-sp",
+        "--stress-ng-path",
+        default="stress-ng",
+        type=str,
+        help="specify the path where stress-ng are located",
     )
 
     args = parser.parse_args()

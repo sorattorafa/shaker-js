@@ -26,7 +26,7 @@ ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN node --version
 RUN npm --version
 RUN npm i -g yarn
-RUN apt install node-gyp0
+RUN apt install node-gyp
 # stress-ng
 RUN apt-get install -y stress-ng
 

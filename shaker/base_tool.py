@@ -5,13 +5,14 @@ from util import subprocess_Popen
 
 
 class BaseTool:
-    def __init__(self, directory, extra_arguments, configs, output_folder, tests_path):
+    def __init__(self, directory, extra_arguments, configs, output_folder, tests_path, stress_ng_path):
         self.directory = directory
         self.extra_arguments = extra_arguments
         self.configs = configs
         self.output_folder = output_folder
         self.stress_ng_process = None
         self.tests_path = tests_path
+        self.stress_ng_path = stress_ng_path
 
         # Clear the output folder
         shutil.rmtree(self.output_folder, ignore_errors=True)
@@ -20,7 +21,7 @@ class BaseTool:
         self.setup()
 
     def start_stress_ng(self, config):
-        command = f"stress-ng --cpu {config['cpuWorkers']} --cpu-load {config['cpuLoad']} --vm {config['vmWorkers']} --vm-bytes {config['vmBytes']}%"
+        command = f"{self.stress_ng_path} --cpu {config['cpuWorkers']} --cpu-load {config['cpuLoad']} --vm {config['vmWorkers']} --vm-bytes {config['vmBytes']}%"
         # print(f"> {command}")
         self.stress_ng_process = subprocess_Popen(command)
 
