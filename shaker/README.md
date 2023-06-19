@@ -27,6 +27,10 @@ optional arguments:
 
 ## Examples
 
+em alguns casos de testes nodejs é necessário fazer o setup do nodejs com o comando:
+
+sudo apt install node-gyp0
+
 ## Jest example 
 
 - ./shaker-js/shaker/shaker.py jest "jests-tests-example" -tc "yarn test" -o "jests-tests-example/output" -sr 1 -nsr 1
