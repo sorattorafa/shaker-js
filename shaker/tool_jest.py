@@ -16,7 +16,7 @@ class Jest(BaseTool):
 
     def setup(self):
         self.add_report_lib()
-        arguments = " --force"
+        arguments = " "
         command = f"npm install{arguments}"
         stdout_ = open(self.output_folder /
                        "exec_setup.out", "a")
