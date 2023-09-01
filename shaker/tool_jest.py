@@ -23,9 +23,6 @@ class Jest(BaseTool):
         stderr_ = open(self.output_folder / "exec_setup.err", "a")
         subprocess_run(command, cwd=str(self.directory),
                        stdout=stdout_, stderr=stderr_)
-        command = f"npm run build"
-        subprocess_run(command, cwd=str(self.directory),
-                       stdout=stdout_, stderr=stderr_)
 
     def run_tests(self, report_folder, tests_command):
         string_report = str(report_folder).split('output/')[1]
