@@ -7,7 +7,7 @@ import os
 class Jest(BaseTool):
 
     def add_report_lib(self):
-        command = f"npm i jest-junit"
+        command = f"yarn add jest-junit"
         stdout_ = open(self.output_folder /
                        "exec_setup.out", "a")
         stderr_ = open(self.output_folder / "exec_setup.err", "a")
@@ -17,7 +17,7 @@ class Jest(BaseTool):
     def setup(self):
         self.add_report_lib()
         arguments = " "
-        command = f"npm install{arguments}"
+        command = f"yarn install{arguments}"
         stdout_ = open(self.output_folder /
                        "exec_setup.out", "a")
         stderr_ = open(self.output_folder / "exec_setup.err", "a")
@@ -32,7 +32,7 @@ class Jest(BaseTool):
         env["JEST_JUNIT_OUTPUT_DIR"] = string_report
 
         if tests_command == None:
-            tests_command = "npm run test"
+            tests_command = "yarn test"
         command = (
             f"{tests_command} {self.tests_path} --reporters=default --reporters=jest-junit"
             if self.tests_path else f"{tests_command} --reporters=default --reporters=jest-junit"
