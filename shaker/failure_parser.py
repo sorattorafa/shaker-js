@@ -4,10 +4,7 @@ import time
 
 def order(entry):
     # Sort by configuration then run number
-    if entry["config"] == "no-stress":
-        return (-1, int(entry["run_number"]))
-    else:
-        return (int(entry["config"]), int(entry["run_number"]))
+    return (-1, int(entry["run_number"]))
 
 def find_xml_files(dir):
     xml_files = []
@@ -23,15 +20,21 @@ def parse(dir):
 
     failures = dict()
     
-    for sub_directory_name in find_xml_files(dir):
-        sub_directory = Path(sub_directory_name)
-        config = sub_directory.name.split(".")[1].strip()
-        run_number = sub_directory.name.split(".")[2].strip()
-
+    for sub_directory_name in find_xml_files(dir):       
         if(sub_directory_name != None):
+            subDirString = str(sub_directory_name)
+            config = subDirString.split(".")[1].strip()
+            
+            if('no-stress' in config):
+                run_number = str(subDirString.split(".")[2].strip()).split('/')[0]
+                config = 'no-stress'
+            else:
+                run_number = config
+                config = 'stress'
+            
+            run_number = int(run_number) + 1
             xml_file = sub_directory_name
             root = ElementTree.parse(xml_file).getroot()
-
             testcases = root.findall("testcase")
 
             if testcases == []:
@@ -50,7 +53,7 @@ def parse(dir):
                     key2 = name
                     value = [
                         {
-                            "config": config,
+                            "config": str(config),
                             "run_number": run_number,
                             "description": description,
                         }
@@ -65,12 +68,11 @@ def parse(dir):
                         else:
                             failures[key][key2].extend(value)
 
-    #for key in failures:
-    #    for key2 in failures[key]:
-    #        failures[key][key2].sort(key=order)
+    for key in failures:
+        for key2 in failures[key]:
+            failures[key][key2].sort(key=order)
 
     return failures
-
 
 """import json
 failures = parse(Path("./output"))
