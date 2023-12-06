@@ -11,28 +11,37 @@ Shaker supports projects using `jest`, `maven` or `pytest`.
 Add the following code to your GitHub Actions workflow configuration
 
 ```yaml
-# Checks-out your repository under $GITHUB_WORKSPACE so Shaker can access it
-- uses: actions/checkout@v2.3.4
-- name: Shaker
-  uses: STAR-RG/shaker@main
-  with:
-    # Tool
-    # Currently supported tools: maven, pytest
-    # Required
-    # Example: testing_tool: maven
-    tool: "maven"
+name: Flaky Shaker # This is a basic workflow to help you get started with Actions 
 
-    # Pass extra arguments to the tool
-    # Optional
-    # Example: extra_arguments: -DModule.skip.tests=true
-    extra_arguments: ""
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-    # Number of Shaker runs
-    # Optional, default: 3
-    # Example: runs: "3"
-    runs: "3"
-    
-    tests_command: "yarn test"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+# This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Jest tests
+        uses: sorattorafa/shaker-js@main
+        with:
+          tool: jest
+          tests_command: yarn test:source
+          runs: 1
+          output_folder: project_name/output
 ```
 
 ## Inputs
