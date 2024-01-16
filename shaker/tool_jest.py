@@ -7,7 +7,7 @@ import os
 class Jest(BaseTool):
 
     def add_report_lib(self):
-        command = f"yarn add jest-junit"
+        command = f"yarn add jest-junit -W"
         stdout_ = open(self.output_folder /
                        "exec_setup.out", "a")
         stderr_ = open(self.output_folder / "exec_setup.err", "a")
