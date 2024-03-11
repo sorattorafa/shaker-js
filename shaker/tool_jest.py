@@ -30,6 +30,8 @@ class Jest(BaseTool):
         env = os.environ.copy()
         env["JEST_JUNIT_UNIQUE_OUTPUT_NAME"] = "true"
         env["JEST_JUNIT_OUTPUT_DIR"] = string_report
+        env["JEST_JUNIT_CLASSNAME"] = "{classname}"
+        env["JEST_JUNIT_TITLE"] = "{title}"
 
         if tests_command == None:
             tests_command = "yarn test"
