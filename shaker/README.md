@@ -37,4 +37,34 @@ sudo apt install node-gyp0
 
 ## Karma example
 
-- ./shaker-js/shaker/shaker.py karma "react-helmet-tree-a2323ad" -tc "yarn test" -o "react-helmet-tree-a2323ad/output" -sr 1 -nsr 1
+
+### Add karma-junit-reporter-lib
+
+- `npm i karma-junit-reporter` 
+- Add reporter config:
+``` 
+plugins.push('karma-junit-reporter')
+config.frameworks = frameworks
+config.plugins = plugins
+config.reporters = reporters
+config.junitReporter = {
+  outputDir: 'output', // os resultados serão salvos como $outputDir/$browserName.xml
+  outputFile: process.env.JEST_JUNIT_OUTPUT_NAME, // se incluído, os resultados serão salvos como $outputDir/$browserName/$outputFile
+  useBrowserName: true, // adicione o nome do navegador ao relatório e aos nomes das classes
+  suite: '', // suite will become the package name attribute in xml testsuite element
+  useBrowserName: true, // add browser name to report and classes names
+  nameFormatter: function (browser, result) {
+    return result.description; // Use a descrição do teste como o nome
+  },
+
+  classNameFormatter: function (browser, result) {
+    return result.suite.join('.'); // Use o caminho da suíte de teste como a classe
+  }, // function (browser, result) to customize the classname attribute in xml testcase element
+  properties: {}, // key value pair of properties to add to the <properties> section of the report
+  xmlVersion: null // use '1' if reporting to be per SonarQube 6.2 XML format
+}
+``` 
+
+- Run command: `./shaker-js/shaker/shaker.py karma "react-helmet-tree-a2323ad" -tc "yarn test" -o "react-helmet-tree-a2323ad/output" -sr 1 -nsr 1`
+
+
