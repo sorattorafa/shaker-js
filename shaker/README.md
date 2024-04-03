@@ -43,6 +43,10 @@ sudo apt install node-gyp0
 - `npm i karma-junit-reporter` 
 - Add reporter config:
 ``` 
+
+
+const reporters = ['dots', 'progress', 'junit']
+
 plugins.push('karma-junit-reporter')
 config.frameworks = frameworks
 config.plugins = plugins
